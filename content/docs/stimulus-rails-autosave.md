@@ -2,29 +2,16 @@
 title: Rails Autosave
 description: A Stimulus controller to autosubmit Rails forms.
 package: rails-autosave
+packagePath: 'stimulus-rails-autosave'
 ---
 
 ## Installation
 
-```bash
-$ yarn add stimulus-rails-autosave
-```
-
-And use it in your JS file:
-
-```js
-// Probably in app/javascript/controllers/index.js
-
-import { Application } from '@hotwired/stimulus'
-import Autosave from 'stimulus-rails-autosave'
-
-const application = Application.start()
-application.register('autosave', Autosave)
-```
-
-:demo-link{package-name="rails-autosave"}
+:installation-block{:package="package" :packagePath="packagePath" controllerName="autosave"}
 
 ## Usage
+
+::code-block{tabName="app/views/todos/edit.html.erb"}
 
 ```erb
 <%= form_with model: @todo, data: { controller: 'autosave' } do |f| %>
@@ -44,15 +31,18 @@ application.register('autosave', Autosave)
 <% end %>
 ```
 
-## 🛠 Configuration
+::
+
+## Configuration
 
 | Attribute                   | Default | Description                                                   | Optional |
 | --------------------------- | ------- | ------------------------------------------------------------- | -------- |
 | `data-autosave-delay-value` | `150`   | Delay (in ms) before actually submit the form. (0 to disable) | ✅       |
 
-## 🎛 Extending Controller
+## Extending Controller
 
 ::extending-controller
+::code-block{tabName="app/javascript/controllers/rails_autosave_controller.js"}
 
 ```js
 import Autosave from 'stimulus-rails-autosave'
@@ -72,4 +62,5 @@ export default class extends Autosave {
 }
 ```
 
+::
 ::
